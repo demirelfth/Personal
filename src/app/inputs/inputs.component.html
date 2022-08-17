@@ -1,0 +1,34 @@
+<form class="form-class">
+    <div class="form-group">
+        <label class="input-class">Name</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="inputNameId" 
+            value="{{ name }}"
+            (change)="changeValueOfMethod($event.target, 1)">
+    </div>
+    <div class="form-group">
+        <label class="input-class">Surname</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="inputSurnameId" 
+            value="{{ surname }}"
+            (change)="changeValueOfMethod($event.target, 2)">
+    </div>
+    <div class="form-group">
+      <label class="input-class">E-Mail</label>
+      <input 
+        type="email" 
+        class="form-control" 
+        id="inputEmailId" 
+        value="{{ email }}"
+        required
+        (change)="changeValueOfMethod($event.target, 3)">
+    </div>
+    <button 
+        type="button"
+        (click) ="checkFunction()"
+        class="btn btn-primary">{{ buttonName }}</button>
+</form>

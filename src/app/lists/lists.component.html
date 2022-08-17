@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="content">
+        <div class="items"  *ngFor="let personal of personalData">
+            <div class="item">
+                {{ personal[0] + " " + personal[1] + ", " + personal[2] }}
+                <div class="operations">
+                    <label class="operation" href="" (click)="updatePersonal(personal[0].toString(), personal[1].toString(), personal[2].toString())"><i class="fa fa-pencil" aria-hidden="true"></i></label>
+                    <label class="operation" href="" (click)="deletePersonal(personal[0].toString(), personal[1].toString(), personal[2].toString())"><i class="fa fa-trash" aria-hidden="true"></i></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

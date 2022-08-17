@@ -1,0 +1,31 @@
+.container{
+    background-color:#C9C9C9;
+    margin-left: center;
+    margin-right: center;
+    margin-top:50px;
+}
+
+.container-header{
+    color: black;
+    font: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+.header-class{
+    padding-top: 20px;
+}
+
+.content{
+    background-color:#AEAEAE;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    height:400px;
+}
+
+.message{
+    padding-bottom: 5px;
+}
