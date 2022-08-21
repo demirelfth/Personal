@@ -5,8 +5,9 @@ var cors = require('cors')
 var http = require('http');
 var bodyParser = require('body-parser');
 const request = require('request')
-var querystring = require('querystring')
-const fs = require('fs')
+var querystring = require('querystring');
+const fs = require('fs');
+var rootDir = 'data.json';
 
 // set up rate limiter for dos attack: maximum of five request per minute
 var RateLimit = require('express-rate-limit');
@@ -31,12 +32,17 @@ app.post('/setPersonalData', (req, res) => {
   var myObject = JSON.parse(data)
   myObject.push(req.body)
   var newData = JSON.stringify(myObject)
-  fs.writeFile('data.json', newData, err =>{
-    // error checking
-    if (err) throw err;
-
-    //console.log("New data added.");
-  });
+  try{
+    fs.writeFile(rootDir, newData, err =>{
+      // error checking
+      if (err) throw err;
+    });
+    res.status(200);
+    res.end();
+  }catch(e){
+    res.status(500);
+    res.end();
+  }
 
   res.send(myObject)
 })
@@ -52,12 +58,17 @@ app.post('/deletePersonalData', (req, res) => {
   }
 
   var newData = JSON.stringify(myObject)
-  fs.writeFile('data.json', newData, err =>{
-    // error checking
-    if (err) throw err;
-
-    //console.log("New data added.");
-  });
+  try{
+    fs.writeFile(rootDir, newData, err =>{
+      // error checking
+      if (err) throw err;
+      res.status(200);
+      res.end();
+    });
+  }catch(e){
+    res.status(500);
+    res.end();
+  }
 
   res.send(myObject)
 })
@@ -75,12 +86,17 @@ app.post('/updatePersonalData', (req, res) => {
   }
 
   var newData = JSON.stringify(myObject)
-  fs.writeFile('data.json', newData, err =>{
-    // error checking
-    if (err) throw err;
-
-    //console.log("New data added.");
-  });
+  try{
+    fs.writeFile(rootDir, newData, err =>{
+      // error checking
+      if (err) throw err;
+      res.status(200);
+      res.end();
+    });
+  }catch(e){
+    res.status(500);
+    res.end();
+  }
 
   res.send(myObject)
 })
