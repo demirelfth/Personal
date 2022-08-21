@@ -36,14 +36,12 @@ app.post('/setPersonalData', (req, res) => {
     fs.writeFile(rootDir, newData, err =>{
 
     });
-    res.status(200);
-    res.end();
+    res.send("Unknown data from user-side.");
+    return;
   }catch(e){
-    res.status(500);
-    res.end();
+    res.send(myObject);
+    return;
   }
-
-  res.send(myObject)
 })
 
 app.post('/deletePersonalData', (req, res) => {
@@ -61,14 +59,12 @@ app.post('/deletePersonalData', (req, res) => {
     fs.writeFile(rootDir, newData, err =>{
       
     });
-    res.status(200);
-    res.end();
+    res.send("Unkown data from user-side.");
+    return;
   }catch(e){
-    res.status(500);
-    res.end();
+    res.send(myObject);
+    return;
   }
-
-  res.send(myObject)
 })
 
 app.post('/updatePersonalData', (req, res) => {
@@ -88,14 +84,12 @@ app.post('/updatePersonalData', (req, res) => {
     fs.writeFile(rootDir, newData, err =>{
 
     });
-    res.status(200);
-    res.end();
+    res.send("Unkwon data from user-side.");
+    return;
   }catch(e){
-    res.status(500);
-    res.end();
+    res.send(myObject);
+    return;
   }
-
-  res.send(myObject)
 })
 
 app.listen(port, () => {
