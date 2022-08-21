@@ -16,12 +16,23 @@ var limiter = RateLimit({
   max: 5
 });
 
-
 // apply rate limiter to all requests
 app.use(limiter);
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+/*
+function isRequestJson(requestBody){
+  var isJson = true;
+
+  if(requestBody === null && requestBody === undefined &&  requestBody === stringConstructor && requestBody === arrayConstructor && requestBody === objectConstructor){
+    isJson = false;
+  }
+
+  return isJson;
+}
+*/
 
 app.get('/', (req, res) => {
   res.send('Hello!')
@@ -30,7 +41,7 @@ app.get('/', (req, res) => {
 app.post('/setPersonalData', (req, res) => {
   var data = fs.readFileSync('data.json')
   var myObject = JSON.parse(data)
-  myObject.push(req.body)
+  myObject.push(req.body);
   var newData = JSON.stringify(myObject)
   try{
     fs.writeFile(rootDir, newData, err =>{
