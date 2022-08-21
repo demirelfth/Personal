@@ -22,7 +22,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-/*
+
 function isRequestJson(requestBody){
   var isJson = true;
 
@@ -32,7 +32,7 @@ function isRequestJson(requestBody){
 
   return isJson;
 }
-*/
+
 
 app.get('/', (req, res) => {
   res.send('Hello!')
@@ -41,7 +41,12 @@ app.get('/', (req, res) => {
 app.post('/setPersonalData', (req, res) => {
   var data = fs.readFileSync('data.json')
   var myObject = JSON.parse(data)
-  myObject.push(req.body);
+  var isJson = isRequestJson(req.body);
+  if(!isJson){
+    res.send("Unknown content from user-side with: " + escape(req.body));
+  }else{
+    myObject.push(req.body);
+  }
   var newData = JSON.stringify(myObject)
   try{
     fs.writeFile(rootDir, newData, err =>{
