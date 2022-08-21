@@ -8,7 +8,16 @@ const request = require('request')
 var querystring = require('querystring')
 const fs = require('fs')
 
+// set up rate limiter for dos attack: maximum of five request per minute
+var RateLimit = require('express-rate-limit');
+var limiter = RateLimit({
+  windowMs: 1*60*100, // 1 minute
+  max: 5
+});
 
+
+// apply rate limiter to all requests
+app.use(limiter);
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
