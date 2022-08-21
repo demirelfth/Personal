@@ -7,8 +7,9 @@ var bodyParser = require('body-parser');
 const request = require('request')
 var querystring = require('querystring');
 const fs = require('fs');
-var rootDir = 'data.json';
 var session = require('express-session');
+var rootDir = 'data.json';
+var secret_value = "secret";
 
 // set up rate limiter for dos attack: maximum of five request per minute
 var RateLimit = require('express-rate-limit');
@@ -24,7 +25,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(session({
-  secret: "secret",
+  secret: secret_value,
+  resave:true,
+  saveUninitialized: true,
   cookie: {
       httpOnly: true,
       secure: true
