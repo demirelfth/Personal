@@ -34,8 +34,7 @@ app.post('/setPersonalData', (req, res) => {
   var newData = JSON.stringify(myObject)
   try{
     fs.writeFile(rootDir, newData, err =>{
-      // error checking
-      if (err) throw err;
+
     });
     res.status(200);
     res.end();
@@ -60,11 +59,10 @@ app.post('/deletePersonalData', (req, res) => {
   var newData = JSON.stringify(myObject)
   try{
     fs.writeFile(rootDir, newData, err =>{
-      // error checking
-      if (err) throw err;
-      res.status(200);
-      res.end();
+      
     });
+    res.status(200);
+    res.end();
   }catch(e){
     res.status(500);
     res.end();
@@ -88,11 +86,10 @@ app.post('/updatePersonalData', (req, res) => {
   var newData = JSON.stringify(myObject)
   try{
     fs.writeFile(rootDir, newData, err =>{
-      // error checking
-      if (err) throw err;
-      res.status(200);
-      res.end();
+
     });
+    res.status(200);
+    res.end();
   }catch(e){
     res.status(500);
     res.end();
