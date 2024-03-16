@@ -24,6 +24,12 @@ Operations that users can do for Staff Record System are:
 * Deleting exist staff record.
 
 --------------------------
+## Used Technologies
+* Angular: Frontend
+* Nodejs: Backend
+* json file: data.json to store data
+
+--------------------------
 ## Highlights
 Essentially in this project, different components are used. This usage is example for angular<br>
 component structure to use more complex angular projects.
